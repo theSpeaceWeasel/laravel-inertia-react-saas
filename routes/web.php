@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Feature1Controller;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/feature1', [Feature1Controller::class,  'index'])->name('feature1.index');
+    Route::get('/feature2', 'Feature2Controller@index')->name('feature2.index');
+    Route::post('/calculate', [Feature1Controller::class,  'calculate'])->name('feature1.calculate');
 });
 
 require __DIR__.'/auth.php';
